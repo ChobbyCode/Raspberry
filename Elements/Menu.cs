@@ -34,6 +34,10 @@ namespace Raspberry.Menus
                 // Print The Menu
                 Console.Clear();
 
+                Console.WriteLine();
+                Console.WriteLine($"Menu: {MenuName}");
+                Console.WriteLine();
+
                 int l = 1; // Number We Are On
                 foreach(var item in _menuItems)
                 {
@@ -46,14 +50,20 @@ namespace Raspberry.Menus
                 char KeyChar = key.KeyChar;
                 string KeyL = KeyChar.ToString();
 
-                // By doing this we know it is not a letter, and either must be
-                // a special character or number
-                if(KeyL.ToUpper() == KeyL)
+                try
                 {
-                    Console.WriteLine("Not A Letter");
-                }
+                    int option = Convert.ToInt32(KeyL);
+                    Console.WriteLine(option);
 
-                Console.ReadLine();
+                    Console.WriteLine(_menuItems[option - 1].Description);
+                    _menuItems[option - 1].OpenMenu();
+                    
+                    menuOpen = false;
+                }catch
+                {
+                    Console.WriteLine("Please Enter A Valid Option");
+                    Console.ReadKey(true);
+                }
             }
         }
     }
