@@ -107,3 +107,13 @@ Rasp.StartRaspberry();
 ```
 
 action.onOpen calls a function called ActionRunned. We can create this function as below.
+
+```c#
+public static void ActionRunned (object sender, EventArgs e)
+{
+    Console.WriteLine("Action Run");
+    Console.ReadLine();
+}
+```
+
+In summary, we swapped the MenuOption out for a MenuAction and created a function for it to call when ran.
