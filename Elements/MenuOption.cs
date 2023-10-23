@@ -7,9 +7,13 @@ namespace Raspberry.Menus
     /// </summary>
     public class MenuOption
     {
-        public MenuOption(string Name, Menu OpenMenu)
-        {
+        public string Name { get; private set; }
+        public string Description { get; private set; }
 
+        public MenuOption(string Name, string Description, Menu OpenMenu)
+        {
+            this.Name = Name;
+            this.Description = Description;
         }
     }
 }
