@@ -29,10 +29,17 @@ namespace Raspberry.Menus
 
         internal void OpenMenu()
         {
-            // Passes The Thread To The User
-            onOpen.Invoke(this, EventArgs.Empty);
-            // The User Handed Thread Back So We Can Close
-            onClose.Invoke(this, EventArgs.Empty);
+            try
+            {
+                // Passes The Thread To The User
+                onOpen.Invoke(this, EventArgs.Empty);
+                // The User Handed Thread Back So We Can Close
+                onClose.Invoke(this, EventArgs.Empty);
+            }
+            catch
+            {
+                // Doesn't matter because they haven't handled for it
+            }
         }
     }
 }

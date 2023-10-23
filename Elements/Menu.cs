@@ -14,7 +14,7 @@ namespace Raspberry.Menus
         public EventHandler onClose;
 
         // Items on the menu
-        private List<MenuOption> _menuItems = new List<MenuOption>();
+        private List<dynamic> _menuItems = new List<dynamic>();
 
         public Menu(string MenuName)
         {
@@ -24,6 +24,11 @@ namespace Raspberry.Menus
         public void AddOption(MenuOption Option)
         {
             _menuItems.Add(Option);
+        }
+
+        public void AddOption(MenuAction Action)
+        {
+            _menuItems.Add(Action);
         }
 
         internal void OpenMenu()
@@ -53,9 +58,6 @@ namespace Raspberry.Menus
                 try
                 {
                     int option = Convert.ToInt32(KeyL);
-                    Console.WriteLine(option);
-
-                    Console.WriteLine(_menuItems[option - 1].Description);
                     _menuItems[option - 1].OpenMenu();
                     
                     menuOpen = false;
