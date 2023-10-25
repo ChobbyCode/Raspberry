@@ -8,6 +8,8 @@ namespace Raspberry.Menus
     public class Menu
     {
         public string MenuName { get; private set; }
+        internal List<string>? Logo { get; set; } = null;
+        internal ConsoleColor LogoColour { get; set; } = ConsoleColor.Red;
 
         // Event Handlers
         public EventHandler onOpen;
@@ -39,9 +41,21 @@ namespace Raspberry.Menus
                 // Print The Menu
                 Console.Clear();
 
-                Console.WriteLine();
-                Console.WriteLine($"Menu: {MenuName}");
-                Console.WriteLine();
+                if (Logo != null)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"Menu: {MenuName}");
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.ForegroundColor = LogoColour;
+                    foreach (string logoLine in Logo)
+                    {
+                        Console.WriteLine(logoLine);
+                    }
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
 
                 int l = 1; // Number We Are On
                 foreach(var item in _menuItems)

@@ -38,5 +38,23 @@ namespace Raspberry
                 return 1;
             }
         }
+
+        /// <summary>
+        /// Unimplemented
+        /// </summary>
+        /// <param name="logo"></param>
+        public static void SetLogo(string[] logo)
+        {
+
+        }
+
+        /// <summary>
+        /// Stops Raspberry
+        /// </summary>
+        /// <returns></returns>
+        public static int CloseRaspberry()
+        {
+            return 0;
+        }
     }
 }
